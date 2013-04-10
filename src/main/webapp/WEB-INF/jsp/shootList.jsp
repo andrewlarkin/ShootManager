@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +6,7 @@
 <title>ShootManager</title>
 </head>
 <body>
-  <div>${photograher.name}</div>
+  <div>${photographer.name}</div>
   <ol>
     <c:forEach items="${photographer.shoots}" var="shoot">
       <li>${shoot.location.name} - ${shoot.date}</li>
