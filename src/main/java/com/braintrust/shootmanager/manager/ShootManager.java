@@ -14,7 +14,7 @@ public class ShootManager {
 	private static String jdbcDriver = "oracle.jdbc.driver.OracleDriver";
 	private static String connectionURI = "jdbc:oracle:thin:@csdb.csc.villanova.edu:1521:csdb";
 	
-	public static Shoot getShoot(int shootId)  throws SQLException{
+	public static Shoot getShoot(int shootId, String login, String password)  throws SQLException{
 		Shoot shoot;
 	
 		try {
@@ -23,7 +23,7 @@ public class ShootManager {
 			Class.forName(jdbcDriver);
 
 			//Connect to the database
-			Connection conn = DriverManager.getConnection(connectionURI, "", "");
+			Connection conn = DriverManager.getConnection(connectionURI, login, password);
   
 			String query = "select shootid, shootdate, weather, locid " +
 						   " from    ddevos.photoshoot " + 
@@ -51,13 +51,13 @@ public class ShootManager {
 		return null;
 	}
 	
-	public static List<Shoot> getShoots(int photographerId) throws SQLException {
+	public static List<Shoot> getShoots(int photographerId, String login, String password) throws SQLException {
 		List<Shoot> shoots = new ArrayList<Shoot>();
 		
 		try {
 			Class.forName(jdbcDriver);
 			
-			Connection conn = DriverManager.getConnection(connectionURI, "" , "");
+			Connection conn = DriverManager.getConnection(connectionURI, login, password);
 			
 			String query = "select shootid, shootdate, weather, locid" + 
 						   " from ddevos.photoshoot " +

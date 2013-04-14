@@ -19,11 +19,13 @@ import com.google.gson.Gson;
 public class ApplicationController {
 	
 	private static Gson gson = new Gson();
+	private static String login = null;
+	private static String password = null;
 	
 	@RequestMapping("/")
 	public ModelAndView photographer() throws Exception {
 		try{
-			List<Photographer> photographers = PhotographerManager.getPhotographers();
+			List<Photographer> photographers = PhotographerManager.getPhotographers(login, password);
 			return new ModelAndView("shootList", "photographers", photographers);
 		} catch (Exception e){
 			System.out.println("couldn't load database driver");           
@@ -34,7 +36,7 @@ public class ApplicationController {
 	@RequestMapping(value = "/getShoots")
 	public @ResponseBody String getShoots(@RequestParam int pId) throws SQLException{
 		try {
-			List<Shoot> shoots = ShootManager.getShoots(pId); 
+			List<Shoot> shoots = ShootManager.getShoots(pId, login, password); 
 			
 			System.out.println(shoots.size());
 			

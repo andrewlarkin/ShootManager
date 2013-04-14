@@ -64,7 +64,7 @@ public class PhotographerManager {
 		//end test code
 	}*/
 	
-	public static Photographer getPhotographer(int photographerId)  throws SQLException{
+	public static Photographer getPhotographer(int photographerId, String login, String password)  throws SQLException{
 		Photographer photographer;
 	
 		try {
@@ -73,7 +73,7 @@ public class PhotographerManager {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
 			//Connect to the database
-			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@csdb.csc.villanova.edu" + ":1521:csdb", "" , "");
+			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@csdb.csc.villanova.edu" + ":1521:csdb", login, password);
   
 			String query = "select pid, pname, pRetired " +
 						   " from    ddevos.photographer " + 
@@ -101,7 +101,7 @@ public class PhotographerManager {
 		return null;
 	}
 	
-	public static List<Photographer> getPhotographers() throws SQLException{
+	public static List<Photographer> getPhotographers(String login, String password) throws SQLException{
 		List<Photographer> photographers;
 		
 		try {
@@ -110,7 +110,7 @@ public class PhotographerManager {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
 			//Connect to the database
-			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@csdb.csc.villanova.edu" + ":1521:csdb", "" , "");
+			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@csdb.csc.villanova.edu" + ":1521:csdb", login, password);
   
 			String query = "select pid, pname, pRetired " +
 						   " from    ddevos.photographer ";

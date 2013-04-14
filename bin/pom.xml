@@ -14,9 +14,10 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.6</source>
+          <target>1.6</target>
         </configuration>
+        <version>3.0</version>
       </plugin>
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
@@ -38,6 +39,18 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    
+    <dependency>
+		  <groupId>com.google.code.gson</groupId>
+		  <artifactId>gson</artifactId>
+		  <version>1.7.1</version>
+	  </dependency>
+    
+    <dependency>
+		  <groupId>javax.servlet</groupId>
+		  <artifactId>jstl</artifactId>
+		  <version>1.2</version>
+		</dependency>
     
     <dependency>
       <groupId>org.springframework</groupId>
