@@ -11,7 +11,7 @@ public class Photographer extends Model {
 	}
 
 	private String name;
-	private Boolean retired;
+	private String retired;
 	private List<Shoot> shoots;
 	private List<Equipment> equipment;
 	
@@ -23,11 +23,11 @@ public class Photographer extends Model {
 		this.name = name;
 	}
 	
-	public Boolean getRetired(){
+	public String getRetired(){
 		return this.retired;
 	}
 	
-	public void setRetired(Boolean retired){
+	public void setRetired(String retired){
 		this.retired = retired;
 	}
 	
