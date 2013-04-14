@@ -1,5 +1,6 @@
 Xooie = {
 		modules: {
-			photographers: 'resources/javascripts/photographers'
+			photographers: 'resources/javascripts/photographers',
+			shoots: 'resources/javascripts/shoots'
 		}
 }

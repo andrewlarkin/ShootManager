@@ -3,6 +3,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Cache-Control" content="no-store" />
   <title>ShootManager</title>
   
   <script src="resources/javascripts/require-config.js"></script>
@@ -38,17 +39,10 @@
 	    </fieldset>
 	  </form>
   
-    <div id="shoots" class="shoots">
+    <div id="shoots" class="shoots" data-widget-type="shoots">
       <h2 class="shoots-heading">Photo Shoots</h2>
-      <ol class="shoot-list">
-        <li class="shoot-list-item" data-shoot-id="1"><a href="#" role="button" type="button" class="button"><span class="shoot-list-item-date">January 20, 2013</span>Shoot Location</a></li>
-        <li class="shoot-list-item" data-shoot-id="2"><a href="#" role="button" type="button" class="button"><span class="shoot-list-item-date">January 20, 2013</span>Shoot Location</a></li>
-        <li class="shoot-list-item" data-shoot-id="3"><a href="#" role="button" type="button" class="button"><span class="shoot-list-item-date">January 20, 2013</span>Shoot Location</a></li>
-        <li class="shoot-list-item" data-shoot-id="4"><a href="#" role="button" type="button" class="button"><span class="shoot-list-item-date">January 20, 2013</span>Shoot Location</a></li>
-        <li class="shoot-list-item" data-shoot-id="5"><a href="#" role="button" type="button" class="button"><span class="shoot-list-item-date">January 20, 2013</span>Shoot Location</a></li>
-        <li class="shoot-list-item" data-shoot-id="6"><a href="#" role="button" type="button" class="button"><span class="shoot-list-item-date">January 20, 2013</span>Shoot Location</a></li>
-        <li class="shoot-list-item"><a href="" role="button" type="button" class="button">Add Shoot</a></li>
-      </ol>
+      <ol class="shoot-list" data-role="listContainer"></ol>
+      <button class="button add" data-role="addShoot">Add Shoot</button>
     </div>
    
     <div data-widget-type="dialog" class="add-shoot-modal">

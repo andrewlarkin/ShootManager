@@ -93,7 +93,7 @@ public class PhotographerManager {
 	  			
 	  			return photographer;
 			}
-      
+			rset.close();
 			return null;
 		} catch (ClassNotFoundException e){
 			System.out.println("couldn't load database driver");           
@@ -130,7 +130,7 @@ public class PhotographerManager {
 	  			
 	  			photographers.add(photographer);
 			}
-      
+			rset.close();
 			return photographers;
 		} catch (ClassNotFoundException e){
 			System.out.println("couldn't load database driver");           

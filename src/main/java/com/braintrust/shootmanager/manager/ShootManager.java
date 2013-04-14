@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.braintrust.shootmanager.model.Location;
 import com.braintrust.shootmanager.model.Shoot;
 
 public class ShootManager {
@@ -43,7 +44,7 @@ public class ShootManager {
 	  			
 	  			return shoot;
 			}
-      
+			rset.close();
 			return null;
 		} catch (ClassNotFoundException e){
 			System.out.println("couldn't load database driver");           
@@ -59,21 +60,29 @@ public class ShootManager {
 			
 			Connection conn = DriverManager.getConnection(connectionURI, login, password);
 			
-			String query = "select shootid, shootdate, weather, locid" + 
-						   " from ddevos.photoshoot " +
-						   " where pid = " + photographerId;
+			String query = "select shootid, shootdate, weather, l.locid, locname, city, state" + 
+						   " from ddevos.photoshoot s, ddevos.location l " +
+						   " where pid = " + photographerId + 
+						   " and s.locid = l.locid";
 			
 			PreparedStatement ps = conn.prepareStatement(query);
 			
 			ResultSet rset = ps.executeQuery();
 			
 			while (rset.next()){
+				Location location = new Location(rset.getInt("locid"));
+				location.setName(rset.getString("locname"));
+				location.setCity(rset.getString("city"));
+				location.setState(rset.getString("state"));
+				
 				Shoot shoot = new Shoot(rset.getInt("shootid"));
 				shoot.setDate(rset.getDate("shootdate"));
 	  			shoot.setWeatherDesc(rset.getString("weather"));
+	  			shoot.setLocation(location);
 	  			
 	  			shoots.add(shoot);
 			}
+			rset.close();
 		} catch (ClassNotFoundException e){
 			System.out.println("could not load database driver");
 		}

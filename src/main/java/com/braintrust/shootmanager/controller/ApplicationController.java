@@ -19,8 +19,8 @@ import com.google.gson.Gson;
 public class ApplicationController {
 	
 	private static Gson gson = new Gson();
-	private static String login = null;
-	private static String password = null;
+	private static String login = "alarkin";
+	private static String password = "SP00908066";
 	
 	@RequestMapping("/")
 	public ModelAndView photographer() throws Exception {
@@ -37,8 +37,6 @@ public class ApplicationController {
 	public @ResponseBody String getShoots(@RequestParam int pId) throws SQLException{
 		try {
 			List<Shoot> shoots = ShootManager.getShoots(pId, login, password); 
-			
-			System.out.println(shoots.size());
 			
 			return gson.toJson(shoots);
 		} catch (Exception e){

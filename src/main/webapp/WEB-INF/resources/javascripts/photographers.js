@@ -10,22 +10,27 @@ define('resources/javascripts/photographers', ['jquery', 'xooie/base'], function
 					 
 					 var id = parseInt($(this).attr(self.options.photoIdAttr), 10);
 					 
-					 self.getShoots(id);
+					 self.getShoots(id, $(this));
 				 });
 	});
 	
 	Photographers.setDefaultOptions({
 		photoButtonSelector: '[data-role="photographer-button"]',
-		photoButtonSelectedClass: 'selected',
+		selectedClass: 'selected',
 		photoIdAttr: 'data-photographer-id',
 			
 		shootContainerSelector: '#shoots'
 	});
 	
-	Photographers.prototype.getShoots = function(id){
+	Photographers.prototype.getShoots = function(id, button){
 		var self = this;
 		//ajax request to retrieve shoots from server
 		this.retrievingShoots = true;
+		
+		self.root.find('.' + this.options.selectedClass).removeClass(this.options.selectedClass);
+		button.addClass(self.options.selectedClass);
+		
+		$(this.options.shootContainerSelector).trigger('shootRequest');
 		
 		$.ajax({
 			url: "getShoots",
@@ -37,11 +42,11 @@ define('resources/javascripts/photographers', ['jquery', 'xooie/base'], function
 			},
 			
 			success: function(data, status, xhr){
-				$(self.options.shootContainerSelector).trigger('update', data);
+				$(self.options.shootContainerSelector).trigger('shootUpdate', [JSON.parse(data)]);
 			},
 			
 			error: function(xhr, status, errorThrown){
-				$(self.options.shootContainerSelector).trigger('error', errorThrown);
+				$(self.options.shootContainerSelector).trigger('shootError', errorThrown);
 			}
 		});
 	};
