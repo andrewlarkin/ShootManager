@@ -1,6 +1,7 @@
 package com.braintrust.shootmanager.manager;
 
-import java.sql.Date;
+import java.sql.*;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,9 +11,9 @@ import com.braintrust.shootmanager.model.Shoot;
 
 public class PhotographerManager {
 	
-	private static Photographer photographer;
+	//private static Photographer photographer;
 	
-	static {
+	/*static {
 		//This code is for testing purposes only and will be replaced by the query class
 		photographer = new Photographer(1);
 		
@@ -61,9 +62,79 @@ public class PhotographerManager {
 		
 		photographer.addShoot(shoots);
 		//end test code
+	}*/
+	
+	public static Photographer getPhotographer(int photographerId)  throws SQLException{
+		Photographer photographer;
+	
+		try {
+
+			//Load the Oracle JDBC driver
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			//Connect to the database
+			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@csdb.csc.villanova.edu" + ":1521:csdb", "" , "");
+  
+			String query = "select pid, pname, pRetired " +
+						   " from    ddevos.photographer " + 
+						   " where pid = " + photographerId;         
+
+			PreparedStatement ps = conn.prepareStatement(query);
+
+			ResultSet rset = ps.executeQuery();
+
+
+			//Action on the result
+			while (rset.next ())
+			{
+				photographer = new Photographer (rset.getInt("pid"));
+	  			photographer.setName(rset.getString("pname"));
+	  			photographer.setRetired(rset.getString("pretired"));
+	  			
+	  			return photographer;
+			}
+      
+			return null;
+		} catch (ClassNotFoundException e){
+			System.out.println("couldn't load database driver");           
+		}
+		return null;
 	}
 	
-	public static Photographer getPhotographer(){
-		return photographer;
+	public static List<Photographer> getPhotographers() throws SQLException{
+		List<Photographer> photographers;
+		
+		try {
+
+			//Load the Oracle JDBC driver
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			//Connect to the database
+			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@csdb.csc.villanova.edu" + ":1521:csdb", "" , "");
+  
+			String query = "select pid, pname, pRetired " +
+						   " from    ddevos.photographer ";
+
+			PreparedStatement ps = conn.prepareStatement(query);
+
+			ResultSet rset = ps.executeQuery();
+			
+			photographers = new ArrayList<Photographer>();
+			
+			//Action on the result
+			while (rset.next ())
+			{
+				Photographer photographer = new Photographer (rset.getInt("pid"));
+	  			photographer.setName(rset.getString("pname"));
+	  			photographer.setRetired(rset.getString("pretired"));
+	  			
+	  			photographers.add(photographer);
+			}
+      
+			return photographers;
+		} catch (ClassNotFoundException e){
+			System.out.println("couldn't load database driver");           
+		}
+		return null;
 	}
 }
