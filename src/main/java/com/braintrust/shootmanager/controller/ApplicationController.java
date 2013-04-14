@@ -4,9 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.braintrust.shootmanager.manager.PhotographerManager;
@@ -28,19 +27,30 @@ public class ApplicationController {
 			List<Photographer> photographers = PhotographerManager.getPhotographers(login, password);
 			return new ModelAndView("shootList", "photographers", photographers);
 		} catch (Exception e){
-			System.out.println("couldn't load database driver");           
+			e.printStackTrace();          
 		}
 		return null;
 	}
 	
 	@RequestMapping(value = "/getShoots")
-	public @ResponseBody String getShoots(@RequestParam int pId) throws SQLException{
+	public @ResponseBody String getShoots(@RequestParam int pId) throws SQLException {
 		try {
 			List<Shoot> shoots = ShootManager.getShoots(pId, login, password); 
 			
 			return gson.toJson(shoots);
 		} catch (Exception e){
-			System.out.println("couldn't load database driver");           
+			e.printStackTrace();          
+		}
+		return null;
+	}
+	
+	@RequestMapping(value = "/addShoot", method = RequestMethod.POST)
+	public String addShoot(@ModelAttribute("shoot") Shoot shoot, BindingResult result) throws SQLException {
+		try {
+			ShootManager.addShoot(shoot, login, password);
+			return "Success";
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return null;
 	}

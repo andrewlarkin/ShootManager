@@ -42,7 +42,7 @@ define('resources/javascripts/photographers', ['jquery', 'xooie/base'], function
 			},
 			
 			success: function(data, status, xhr){
-				$(self.options.shootContainerSelector).trigger('shootUpdate', [JSON.parse(data)]);
+				$(self.options.shootContainerSelector).trigger('shootUpdate', [id, JSON.parse(data)]);
 			},
 			
 			error: function(xhr, status, errorThrown){

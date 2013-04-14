@@ -1,10 +1,6 @@
 package com.braintrust.shootmanager.manager;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,5 +84,60 @@ public class ShootManager {
 		}
 		
 		return shoots;
+	}
+	
+	
+	public static void addShoot(Shoot shoot, String login, String password) throws SQLException {
+		
+		int ResultCount;
+		
+		try {
+			
+			Class.forName(jdbcDriver);
+			
+			Connection conn = DriverManager.getConnection(connectionURI, login, password);
+			
+			conn.setAutoCommit(false);
+			
+			CallableStatement cs = conn.prepareCall("{? = call DDEVOS.fn_addShoot(?,?,?,?)}");
+			cs.registerOutParameter(1, Types.NUMERIC);
+			cs.setDate(2, shoot.getDate());
+			cs.setString(3, shoot.getWeatherDesc());
+			cs.setInt(4, shoot.getPhotographerId());
+			cs.setInt(5, shoot.getLocationId());
+			cs.executeUpdate();
+			
+			shoot.setId(cs.getInt(1));
+			
+			for (int equipmentId : shoot.getEquipmentIds()) {
+				cs = conn.prepareCall ("{? = call DDEVOS.fn_addEquipmentUsed(?,?)}");
+				cs.registerOutParameter(1, Types.NUMERIC);
+				cs.setInt(2, equipmentId);
+				cs.setInt(3, shoot.getId());
+				cs.executeUpdate();
+				ResultCount = cs.getInt(1);
+			}
+			
+			/*
+			for (int subjectId : shoot.getSubjectIds()) {
+				cs = conn.prepareCall ("{? = call DDEVOS.fn_addEquipmentUsed(?,?,?,?)}");
+				cs.registerOutParameter(1, Types.NUMERIC);
+				cs.setString(2, subject.getGenus());
+				cs.setString(3, subject.getSpecies());
+				cs.setInt(4, subject.locid);
+				cs.setString(5, subject.getfndNotes());
+				cs.executeUpdate();
+				ResultCount = cs.getInt(1);
+			}*/
+			
+			conn.commit();
+			conn.setAutoCommit(true);
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

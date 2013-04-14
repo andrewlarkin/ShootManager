@@ -1,4 +1,4 @@
-define('resources/javascripts/shoots', ['jquery', 'underscore', 'xooie/base'], function($, _, Base){
+define('resources/javascripts/shoots', ['jquery', 'underscore', 'xooie/base', 'xooie/dialog'], function($, _, Base, Dialog){
 	
 	var Shoots = Base('photographers', function(){
 		var self = this;
@@ -10,14 +10,23 @@ define('resources/javascripts/shoots', ['jquery', 'underscore', 'xooie/base'], f
 				self.getListContainer().html('Loading...')
 			},
 			
-			shootUpdate: function(event, data){
-				self.activate(data);
+			shootUpdate: function(event, id, data){
+				self.activate(id, data);
 			},
 			
 			shootError: function(event, error){
 				
 			}
 		});
+		
+		this.root.find(this.options.addShootButtonSelector)
+				 .on('click', function(){
+					 if (!_.isUndefined(self.activeId)) {
+						 Dialog.open(0);
+						 
+						 $('.is-dialog-active').attr('data-photo-id', self.activeId);
+					 }
+				 });
 	});
 	
 	Shoots.setDefaultOptions({
@@ -29,8 +38,10 @@ define('resources/javascripts/shoots', ['jquery', 'underscore', 'xooie/base'], f
 		return this.root.find(this.options.listSelector);
 	};
 	
-	Shoots.prototype.activate = function(shoots){
+	Shoots.prototype.activate = function(id, shoots){
 		var self = this;
+		
+		this.activeId = id;
 		
 		this.getListContainer().html("");
 		

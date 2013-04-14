@@ -8,10 +8,14 @@ public class Shoot extends Model {
 		super(id);
 	}
 	
+	private int locationId;
+	private int photographerId;
 	private Date date;
 	private String weatherDesc;
 	private Location location;
 	private List<Equipment> equipment;
+	private List<Integer> equipmentIds;
+	private List<Integer> subjectIds;
 	
 	public Date getDate(){
 		return this.date;
@@ -27,6 +31,22 @@ public class Shoot extends Model {
 	
 	public void setWeatherDesc(String weatherDesc){
 		this.weatherDesc = weatherDesc;
+	}
+	
+	public int getLocationId(){
+		return this.locationId;
+	}
+	
+	public void setLocationId(int locationId){
+		this.locationId = locationId;
+	}
+	
+	public int getPhotographerId(){
+		return this.photographerId;
+	}
+	
+	public void setPhotographerId(int photographerId){
+		this.photographerId = photographerId;
 	}
 	
 	public Location getLocation(){
@@ -48,4 +68,22 @@ public class Shoot extends Model {
 	public void addEquipment(List<Equipment> equipment){
 		this.equipment.addAll(equipment);
 	}
+	
+	public List<Integer> getEquipmentIds(){
+		return this.equipmentIds;
+	}
+	
+	public void addEquipmentId(int equipmentId){
+		this.equipmentIds.add(equipmentId);
+	}
+	
+	public List<Integer> getSubjectIds(){
+		return this.subjectIds;
+	}
+	
+	public void addSubjectId(int subjectId){
+		this.subjectIds.add(subjectId);
+	}
+	
+	
 }
