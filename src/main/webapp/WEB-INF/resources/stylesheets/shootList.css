@@ -1,0 +1,91 @@
+body {
+	font-family: Century Gothic, Helvetica, Sans Serif;
+	margin: 0;
+	background: url(../images/mountainscape-and-blue-lake.jpg) no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-ms-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+fieldset {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.button {
+	display: inline-block;
+	-webkit-transition: color 0.5s;
+	transition: color 0.5s;
+	box-sizing: border-box;
+	padding: 10px 15px;
+	text-decoration: none;
+	color: #fff;
+}
+
+.button:hover,
+.button:focus {
+	color: #FF9800;
+}
+
+.heading {
+	padding: 20px 15px;
+  margin: 10px 0;
+	background-color: rgba(0,0,0,0.7);
+	color: #f4f4f4;
+}
+
+.heading-title {
+	font-size: 40px;
+	
+}
+
+.heading-subtitle {
+	font-size: 20px;
+	color: #dadada;
+}
+
+.add-shoot-modal {
+	display: none;
+}
+
+.photographer-heading,
+.shoots-heading {
+	font-weight: normal;
+	margin: 5px 0;
+	padding: 0;
+}
+
+.photographers {
+	display: inline-block;
+	padding: 10px;
+	margin-right: 5px;
+	width: 25%;
+	background-color: rgba(0,0,0,0.7);
+	color: #f4f4f4;
+}
+
+.photographer-list,
+.shoot-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.photographer-list-item,
+.shoot-list-item {
+	display: block;
+	border-top: 1px solid #eaeaea;
+}
+
+.shoots {
+	display: inline-block;
+	vertical-align: top;
+	padding: 10px;
+  width: 50%;
+  background-color: rgba(0,0,0,0.7);
+  color: #f4f4f4;
+}
