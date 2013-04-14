@@ -19,8 +19,8 @@ import com.google.gson.Gson;
 public class ApplicationController {
 	
 	private static Gson gson = new Gson();
-	private static String login = "alarkin";
-	private static String password = "SP00908066";
+	private static String login = null;
+	private static String password = null;
 	
 	@RequestMapping("/")
 	public ModelAndView photographer() throws Exception {
