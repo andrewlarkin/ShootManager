@@ -15,6 +15,11 @@ Current Functionality:
 Architecture
 ------------
 
+Sever Technology Used:
+- Maven
+- Spring
+- JSP
+
 The site utilizes Spring MVC to display views.  The ApplicationController handles routing.  This will be utilized
 for the inital page laod (/) as well as subsequent AJAX requests (/getShoots, /addShoot).  Each object in the
 database has a corresponding model.  All models extend from the base Model class:
