@@ -50,7 +50,7 @@ on the Villanova Unix server.
 
 ___________
 
-![ShootManager Screen 1](/src/main/webapp/WEB-INF/resources/images/sm-grab-1.jpg "Photographer List")
+![ShootManager Screen 1](/src/main/webapp/WEB-INF/resources/images/sm-grab-1.jpg "Photographer List View")
 
 The user interface is rendered using jsp templates:
 
@@ -59,6 +59,8 @@ src/main/webapp/WEB-INF/jsp
 
 A list of photographers is passed to the view, making this data available on page load.  Additional content is loaded
 asynchronously.
+
+![ShootManager Screen 2](/src/main/webapp/WEB-INF/resources/images/sm-grab-2.jpg "Shoot List List View")
 
 The following JavaScript libraries are leveraged to build the user interface:
 src/main/webapp/WEB-INF/resources/javascripts
@@ -70,6 +72,8 @@ src/main/webapp/WEB-INF/resources/javascripts
 - photographer.js - A module built on Xooie that provides the functionality to the list of photographers
 - shoots.js - A module that handles rendering functionality for the shoots list.
 - add_shoot.js - A Xooie addon module that provides functionality for submitting new photo shoot data via AJAX.
+
+![ShootManager Screen 3](/src/main/webapp/WEB-INF/resources/images/sm-grab-3.jpg "Add Shoot View")
 
 The add_shoot form consists currently of a data-type input for the date value, a dropdown select to chose a location,
 an input for weather description and a list of checkboxes to select equipment used for the shoot.  Subject data is 
