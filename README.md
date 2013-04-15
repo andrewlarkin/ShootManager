@@ -50,6 +50,8 @@ on the Villanova Unix server.
 
 ___________
 
+![ShootManager Screen 1](/src/main/webapp/WEB-INF/resources/images/sm-grab-1.jpg "Photographer List")
+
 The user interface is rendered using jsp templates:
 
 src/main/webapp/WEB-INF/jsp
