@@ -76,7 +76,8 @@ and date of last use by a particular photographer.
 total number of shoots per location, and the last shoot date
 
 
-___________
+User Interface
+-------------
 
 ![ShootManager Screen 1](/src/main/webapp/WEB-INF/resources/images/sm-grab-1.jpg "Photographer List View")
 
