@@ -46,34 +46,33 @@ src/main/java/com/braintrust/managers
 These classes will either make simple queries against the database, or make calls to functions that are stored
 on the Villanova Unix server.
 
-___________
-
 Database Programming
+------------
 
 Functions
 
 The following database functions have been added to support the addition of a new photographer and a new photoshoot:
 
-fn_addphotographer
-fn_addequipmentused
-fn_addsubjectfound
-fn_addshoot
+- fn_addphotographer
+- fn_addequipmentused
+- fn_addsubjectfound
+- fn_addshoot
 
 Sequences
 
 Two sequences were added to support the additions of a photoshoot. These two tables have incremental 
 ids that are stored within their database tables. 
 
-sq_photographer
-sq_photoshoot
+- sq_photographer
+- sq_photoshoot
 
 Reports
 
 In addition, two reports (that are currently usable outside of the java application) are as follows: 
 
-BT_EU.sql (Equipment Use Report) - Report will list all of the equipment that has been used, how many times, 
+- BT_EU.sql (Equipment Use Report) - Report will list all of the equipment that has been used, how many times, 
 and date of last use by a particular photographer. 
-BT_LU.sql (Location Use Summary Report) - Report will list each location, how many photographer have shot at that location, 
+- BT_LU.sql (Location Use Summary Report) - Report will list each location, how many photographer have shot at that location, 
 total number of shoots per location, and the last shoot date
 
 
