@@ -18,8 +18,8 @@ import com.google.gson.Gson;
 public class ApplicationController {
 	
 	private static Gson gson = new Gson();
-	private static String login = null;
-	private static String password = null;
+	private static String login = "";
+	private static String password = "";
 	
 	@RequestMapping("/")
 	public ModelAndView photographer() throws Exception {

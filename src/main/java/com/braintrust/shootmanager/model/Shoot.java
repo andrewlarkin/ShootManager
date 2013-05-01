@@ -8,6 +8,10 @@ public class Shoot extends Model {
 		super(id);
 	}
 	
+	public Shoot() {
+		this(0);
+	}
+	
 	private int locationId;
 	private int photographerId;
 	private Date date;
@@ -73,12 +77,20 @@ public class Shoot extends Model {
 		return this.equipmentIds;
 	}
 	
+	public void setEquipmentIds(List<Integer> equipmentIds){
+		this.equipmentIds = equipmentIds;
+	}
+	
 	public void addEquipmentId(int equipmentId){
 		this.equipmentIds.add(equipmentId);
 	}
 	
 	public List<Integer> getSubjectIds(){
 		return this.subjectIds;
+	}
+	
+	public void setSubjectIds(List<Integer> subjectIds){
+		this.subjectIds = subjectIds;
 	}
 	
 	public void addSubjectId(int subjectId){

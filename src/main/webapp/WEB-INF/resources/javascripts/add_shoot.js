@@ -19,7 +19,7 @@ define('resources/javascripts/add_shoot', ['jquery', 'xooie/addons/base', 'xooie
 		var photoId = parseInt(this.module.root.attr('data-photo-id'), 10),
 			i, shoot, self = this;
 		
-		shoot = {
+		/*shoot = {
 				data: form_data.date.value,
 				weatherDesc: form_data.weather.value,
 				photographerId: photoId,
@@ -29,12 +29,15 @@ define('resources/javascripts/add_shoot', ['jquery', 'xooie/addons/base', 'xooie
 		
 		for (i=0; i < form_data.equipment.length;i+=1){
 			shoot.equipmentIds.push(form_data.equipment[i].value);
-		}
+		}*/
+		
+		shoot = $(form_data).serialize();
 		
 		$.ajax({
 			type: 'POST',
 			url: 'addShoot',
 			data: shoot,
+			dataType: 'json',
 			complete: function(){
 				Dialog.close(self.module.id);
 			},

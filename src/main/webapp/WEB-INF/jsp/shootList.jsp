@@ -50,10 +50,11 @@
         <h2 class="add-shoot-heading">Add A Photo Shoot</h2>
         <form data-role="form">
           <fieldset>
+            <input id="add-shoot-pid" type="hidden" name="photographerId" value="" />
             <label>Date</label>
             <input class="add-shoot-input" type="date" name="date" required></input>
             <label>Location</label>
-            <select name="location" class="add-shoot-select" data-role="locationSelect"  required>
+            <select name="locationId" class="add-shoot-select" data-role="locationSelect"  required>
               <option value="1">Pennypack Park</option>
               <option value="2">Penn Treaty Park</option>
               <option value="3">Franklin Delano Roosevelt Park</option>
@@ -66,14 +67,14 @@
               <option value="10">Spring Mill County Park</option>
             </select>
             <label>Weather</label>
-            <input class="add-shoot-input" name="weather"  required></input>
+            <input class="add-shoot-input" name="weatherDesc"  required></input>
            </fieldset>
            <fieldset>
             <legend>Equipment</legend>
             <ol>
-              <li><label>AF-S NIKKOR 85mm</label><input type="checkbox" name="equipment" value="1"/></li>
-	            <li><label>AF-S Nikkor 24-70mm</label><input type="checkbox" name="equipment" value="2"/></li>
-	            <li><label>Canon EF 70-200mm</label><input type="checkbox" name="equipment" value="3"/></li>
+              <li><label>AF-S NIKKOR 85mm</label><input type="checkbox" name="equipmentIds" value="1"/></li>
+	            <li><label>AF-S Nikkor 24-70mm</label><input type="checkbox" name="equipmentIds" value="2"/></li>
+	            <li><label>Canon EF 70-200mm</label><input type="checkbox" name="equipmentIds" value="3"/></li>
             </ol>
           </fieldset>
           <button data-role="closeButton" class="button">Cancel</button>

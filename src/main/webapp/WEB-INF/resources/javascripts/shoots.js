@@ -24,6 +24,7 @@ define('resources/javascripts/shoots', ['jquery', 'underscore', 'xooie/base', 'x
 					 if (!_.isUndefined(self.activeId)) {
 						 Dialog.open(0);
 						 
+						 $('#add-shoot-pid').attr('value', self.activeId);
 						 $('.is-dialog-active').attr('data-photo-id', self.activeId);
 					 }
 				 });
